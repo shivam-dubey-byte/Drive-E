@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block body %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{{ url_for('static',filename='imp/Dashboard/dasgboard-img.jpg') }}');" >
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Admin Panel</h1>
+              <span class="subheading">Manage your posts and change them</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <h1>Basic Actions</h1>
+          
+           <a href="/edit/0">  <button class="btn btn-primary"> Add a new post</button></a>
+           <a href="/logout">  <button class="btn btn-primary"> Logout</button></a>
+<hr>
+          <h1>Upload A File</h1>
+          
+            <form action="/uploader" method="post" enctype="multipart/form-data">
+              
+<input type="file" name="file1">
+<button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+          <hr>
+<h1>Tournaments</h1>
+<table class="table table-striped" >
+  <thead style="color: teal; font-size: 30px;">
+  <tr>
+    <td> id </td>
+    <td> Title </td>
+    <td> Date </td>
+    <td> Time </td>
+    <td> Edit </td>
+    <td> Delete </td>
+  </tr>
+  </thead>
+    <tbody>
+
+    {% for data in datas %}
+
+     <tr style="color: red;">
+      <td> #{{data.id}}</td>
+      <td> {{data.title[0:13]}}..</td>
+      <td> {{data.date}} </td>
+      <td> {{data.time}}</td>
+        <td><a href="/edit/{{data.id}}"><button class="btn btn-primary" >Edit</button></a></td>
+        <td><a href="/delete/{{data.id}}"><button class="btn btn-primary">Delete</button></a></td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a class="btn btn-primary float-left" href="{{prev}}"> &larr;Previous</a>
+  <a class="btn btn-primary float-right" href="{{next}}">Next &rarr;</a>
+      
+        </div>
+      </div>
+    </div>
+    {% endblock %}

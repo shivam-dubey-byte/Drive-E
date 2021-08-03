@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GeoLocation</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCs_7u2FgIvY7-WjBpEGFhVhfI272vf6Fs">
+    </script>
+  </head>
+  <body onload='getLocation()'>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7195.343043311339!2d85.10751709999997!3d25.6158292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1625078955463!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <iframe
+  width="450"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed?key=AIzaSyCs_7u2FgIvY7-WjBpEGFhVhfI272vf6Fs&center=25.6158292,85.1075171&zoom=18&maptype=satellite" allowfullscreen>
+</iframe>
+    <button onclick="getLocation()">Try It</button>
+    <p id="demo"></p>
+    <form action="/" method="post">
+      <input type="text" name="latitude" id="latitude" value="">
+      <input type="text" name="longitude" id="longitude" value="">
+    </form>
+    <script>
+      var x = document.getElementById("latitude");
+      var y = document.getElementById("longitude");
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+    function showPosition(position) {
+      x.value = position.coords.latitude;
+      y.value = position.coords.longitude;
+      // do some processing submit the form...
+      document.forms[0].submit();
+    }
+  </script>
+  </body>
+</html>

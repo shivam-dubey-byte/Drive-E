@@ -1,0 +1,484 @@
+from django.template.context_processors import csrf
+from email_validator import validate_email, EmailNotValidError
+from flask import Flask, render_template, request, session, redirect
+from flask_mail import Mail
+from flask_session import Session
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+import os
+import json
+import random
+from sqlalchemy.orm import scoped_session, sessionmaker
+#views.py
+from django.shortcuts import render,render_to_response
+from django.http import HttpResponse,HttpResponseRedirect
+from django.template.loader import get_template
+from django.template import Context, Template,RequestContext
+import datetime
+import hashlib
+from random import randint
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+#from django.core.context_processors import csrf
+#urls.py
+"""mysite URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.8/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Add an import:  from blog import urls as blog_urls
+    2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
+"""
+
+#from django.conf.urls import include,url
+#from django.contrib import admin
+#from polls.views import home,success,failure
+
+#from views import success,Home,failure
+
+
+
+with open('config.json','r') as c:
+    params = json.load(c)['params']
+
+
+local_server = True
+app = Flask(__name__)
+
+session = Session()
+
+app.secret_key = '\x80\xa6\x0e\x0e\x01<\xe1\x1f\x19\xde\xc6{\xf2\xa8\x8d\xaf'
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT='465',
+    MAIL_USE_SSL=True,
+    MAIL_USERNAME=params['gmail-user'],
+    MAIL_PASSWORD=params['gmail-password']
+)
+app.config['UPLOAD_FOLDER']= params['upload_location']
+mail = Mail(app)
+
+secret_verification_key=''#it helps in reset password
+reset_user_id = 1
+if (local_server):
+    app.config["SQLALCHEMY_DATABASE_URI"] = params['local_uri']
+else:
+    app.config["SQLALCHEMY_DATABASE_URI"] = params['pro_uri']
+
+
+db = SQLAlchemy(app)
+
+
+class Tournamnets(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    slug = db.Column(db.String(100), unique=False, nullable=False)
+    title = db.Column(db.String(120),unique=False,nullable=False)
+    time = db.Column(db.String(6),unique=False,nullable=False)
+    date = db.Column(db.String(11),unique=False,nullable=False)
+
+class Users(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120),unique=False,nullable=False)
+    pass_word = db.Column(db.String(50),unique=False,nullable=False)
+    phone_num= db.Column(db.String(12),unique=True,nullable=False)
+    email = db.Column(db.String(120),unique=True, nullable=False)
+    country = db.Column(db.String(50), unique=False,nullable=False)
+
+#views.py
+@app.route('/secure-payment')
+def Home(request):
+	MERCHANT_KEY = ""
+	key=""
+	SALT = ""
+	PAYU_BASE_URL = "https://sandboxsecure.payu.in/_payment"
+	action = ''
+	posted={}
+	# Merchant Key and Salt provided y the PayU.
+	for i in request.POST:
+		posted[i]=request.POST[i]
+	hash_object = hashlib.sha256(b'randint(0,20)')
+	txnid=hash_object.hexdigest()[0:20]
+	hashh = ''
+	posted['txnid']=txnid
+	hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10"
+	posted['key']=key
+	hash_string=''
+	hashVarsSeq=hashSequence.split('|')
+	for i in hashVarsSeq:
+		try:
+			hash_string+=str(posted[i])
+		except Exception:
+			hash_string+=''
+		hash_string+='|'
+	hash_string+=SALT
+	hashh=hashlib.sha512(hash_string).hexdigest().lower()
+	action =PAYU_BASE_URL
+	if(posted.get("key")!=None and posted.get("txnid")!=None and posted.get("productinfo")!=None and posted.get("firstname")!=None and posted.get("email")!=None):
+		return render_to_response('current_datetime.html',RequestContext(request,{"posted":posted,"hashh":hashh,"MERCHANT_KEY":MERCHANT_KEY,"txnid":txnid,"hash_string":hash_string,"action":"https://test.payu.in/_payment" }))
+	else:
+		return render_to_response('current_datetime.html',RequestContext(request,{"posted":posted,"hashh":hashh,"MERCHANT_KEY":MERCHANT_KEY,"txnid":txnid,"hash_string":hash_string,"action":"." }))
+
+#@csrf_protect
+#@csrf_exempt
+#def success(request):
+#	c = {}
+#    	c.update(csrf(request))
+#	status=request.POST["status"]
+#	firstname=request.POST["firstname"]
+#	amount=request.POST["amount"]
+#	txnid=request.POST["txnid"]
+#	posted_hash=request.POST["hash"]
+#	key=request.POST["key"]
+#	productinfo=request.POST["productinfo"]
+#	email=request.POST["email"]
+#	salt="GQs7yium"
+#	try:
+#		additionalCharges=request.POST["additionalCharges"]
+#		retHashSeq=additionalCharges+'|'+salt+'|'+status+'|||||||||||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+#	except Exception:
+#		retHashSeq = salt+'|'+status+'|||||||||||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+#	hashh=hashlib.sha512(retHashSeq).hexdigest().lower()
+#	if(hashh !=posted_hash):
+#		print("Invalid Transaction. Please try again")
+#	else:
+#		print("Thank You. Your order status is ", status)
+#		print("Your Transaction ID for this transaction is ",txnid)
+#		print("We have received a payment of Rs. ", amount ,". Your order will soon be shipped.")
+#	return render_to_response('sucess.html',RequestContext(request,{"txnid":txnid,"status":status,"amount":amount}))
+
+
+#@csrf_protect
+#@csrf_exempt
+#def failure(request):
+#	#c = {}
+#    c.update(csrf(request))
+#    #status=request.POST["status"]
+#	firstname=request.POST["firstname"]
+#	amount=request.POST["amount"]
+#	txnid=request.POST["txnid"]
+#	posted_hash=request.POST["hash"]
+#	key=request.POST["key"]
+#	productinfo=request.POST["productinfo"]
+#	email=request.POST["email"]
+#	salt=""
+#	try:
+#		additionalCharges=request.POST["additionalCharges"]
+#		retHashSeq=additionalCharges+'|'+salt+'|'+status+'|||||||||||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+#	except Exception:
+#		retHashSeq = salt+'|'+status+'|||||||||||'+email+'|'+firstname+'|'+productinfo+'|'+amount+'|'+txnid+'|'+key
+#	hashh=hashlib.sha512(retHashSeq).hexdigest().lower()
+#	if(hashh !=posted_hash):
+#		print("Invalid Transaction. Please try again")
+#	else:
+#		print("Thank You. Your order status is ", status)
+#		print("Your Transaction ID for this transaction is ",txnid)
+#		print("We have received a payment of Rs. ", amount ,". Your order will soon be shipped.")
+# 	return render_to_response( "Failure.html",RequestContext(request,c) )
+
+#--Views.py End
+
+#urls.py
+#urlpatterns = [
+#    url(r'^admin/', include(admin.site.urls)),
+#    url(r'^home/', Home),
+#    url(r'^Success/', success),
+#    url(r'^Failure/', failure),
+
+#]
+#--urls.py
+
+@app.route('/',methods= ['GET','POST'])
+def hello_world():
+    if request.method=='POST':
+        if 'user' in session:
+            name = session['user']
+            return render_template('index.html', join_us='/sign_up', params=params, login='logout',tourney='/tournament',user_page=params['user_page'] ,user_name=name,login_data='Logout')
+        return render_template('index.html',join_us='/sign_up',params=params,login='sign_in',tourney='/tournament',user_page=' ',user_name = '',login_data='Login')
+    return render_template('index.html', join_us='/sign_up', params=params, login='sign_in', tourney='/tournament',user_page=' ',user_name='',login_data='Login')
+
+@app.route('/tournament')
+def tourney():
+    return render_template('tournament.html',params=params)
+
+@app.route('/sign_in',methods=['GET','POST'])
+def sign_in():
+    #if (request.method == 'POST'):
+    return render_template('sign_in.html',form_submit="/form-sign_in",params=params,join_us='/sign_up',email_verification=' ',wrong_user=' ')
+
+@app.route('/form-sign_in',methods=['POST'])
+def form_sign_in_validation():
+    if request.method=='POST':
+        email = request.form.get('email')
+        pass_Key = request.form.get('pass')
+        try:
+            valid = validate_email(email)
+            e_mail = valid.email
+            data_user = Users.query.filter_by(email=e_mail).first()
+            if data_user:
+                if pass_Key == data_user.pass_word:
+                    session['user'] = data_user.email
+                    return redirect('/', code=307)#code=307 to make POST request
+                else:
+                    return render_template('sign_in.html', form_submit="/form-sign_in", params=params,join_us='/sign_up', email_verification=' ',wrong_user='WRONG_EMAIL_OR_PASSWORD')
+            else:
+                return render_template('sign_in.html', form_submit="/form-sign_in", params=params, join_us='/sign_up',email_verification=' ', wrong_user='WRONG_EMAIL_OR_PASSWORD')
+        except EmailNotValidError as e:
+            #print(str(e))
+            value = 'EMAIL_NOT_VERIFIED'
+            return render_template('sign_in.html', form_submit="/form-sign_in", params=params, join_us='/sign_up',email_verification=value,wrong_user=' ')
+    else:
+        return redirect('/')
+
+
+
+
+@app.route('/sign_up')
+def sign_up_form():
+    return render_template('sign_up.html',sign_up_action='/form-sign_up',params=params,login='sign_in')
+
+@app.route('/form-sign_up',methods=['GET','POST'])
+def sign_up():
+    if request.method=='POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        password = request.form.get('pass')
+        phone = request.form.get('phone')
+        country = request.form.get('country')
+
+        entry = Users(name=name,phone_num = phone,email=email,country=country,pass_word=password)
+        db.session.add(entry)
+        db.session.commit()
+        mail.send_message('New message from ' + name,
+                          sender=email,
+                          recipients=[params['gmail-user']],
+                          body= name + ' : ' + email + ' : ' + country + ' : ' + phone + ' : ' + password)
+
+        return redirect('/')#render_template('index.html',params=params,join_us='/sign_up')
+
+@app.route('/n-h/<string:post_slug>',methods=['GET'])
+def tournament(post_slug):
+    team = Tournamnets.query.filter_by(slug = post_slug).first()
+    #list = (user.sno,user.name,user.email,user.country,user.phone_num)
+    return render_template('dashboard.html',post=team,params=params)
+
+@app.route("/dashboard-admin", methods=['GET', 'POST'])
+def dashboard():
+    if 'user' in session and session['user'] == params['admin-user']:
+        x = len(Tournamnets.query.all())
+        y = x - 6
+        datas = Tournamnets.query.all()[:y:-1]
+        return render_template('dashboard.html', login_admin='/admin-login-form',
+                               users_joined='/users-joined-admin', params=params, datas=datas)
+
+    if request.method == 'POST':
+        email = request.form.get('email')
+        userpass = request.form.get('pass')
+        try:
+            valid = validate_email(email)
+            e_mail = valid.email
+
+            if (email == params['admin-user'] and userpass == params['admin-password']):
+                # set the session variable
+                session['user'] = email
+                x = len(Tournamnets.query.all())
+                y = x-6
+                datas = Tournamnets.query.all()[:y:-1]
+                return render_template('dashboard.html', login_admin='/admin-login-form',users_joined='/users-joined-admin', params=params, datas=datas)
+            else:
+                return render_template('sign_in.html', form_submit='/dashboard-admin', params=params,
+                                       email_verification=' ', wrong_user='WRONG_EMAIL_OR_PASSWORD')
+
+        except EmailNotValidError as e:
+            print(str(e))
+            value = 'EMAIL_NOT_VERIFIED'
+            return render_template('sign_in.html', form_submit="/form-sign_in", params=params, join_us='/sign_up',email_verification=value,wrong_user=' ')
+
+
+    return render_template('sign_in.html',form_submit='/dashboard-admin',params=params,email_verification=' ',wrong_user=' ')
+
+@app.route("/edit/<string:id>",methods = ['GET','POST'])
+def edit(id):
+    if ('user' in session and session['user']== params['admin-user']):
+        if request.method =='POST':
+            title = request.form.get('title')
+            date = request.form.get('date')
+            time = request.form.get('time')
+            slug = request.form.get('slug')
+            if id == '0':
+                data = Tournamnets(title = title, date= date, time = time, slug = slug)
+                db.session.add(data)
+                db.session.commit()
+            else:
+                #data = Tournamnets.query.filter_by(id=id).first()
+                data = session.query(id).get(id)
+                data.title = title
+                data.date = date
+                data.time = time
+                data.slug = slug
+                db.session.commmit()
+                return redirect('/edit/'+id)
+        data = Tournamnets.query.filter_by(id=id).first()
+        return render_template('edit.html',params=params,data = data)
+
+@app.route('/delete/<string:id>')
+def delete_tourny(id):
+    if ('user' in session and session['user']== params['admin-user']):
+        id = int(id)
+        data = Tournamnets.query.filter_by(id = id).first()
+        db.session.delete(data)
+        db.session.commit()
+    return redirect('/dashboard-admin')
+
+@app.route('/logout')
+def log_out():
+    if 'user' in session:
+        if session['user']==params['admin-user']:
+            session.pop('user')
+            return redirect('/dashboard-admin')
+        else:
+            session.pop('user')
+            return redirect('/',code=307)
+
+
+@app.route('/admin-login-form')
+def admin_login_form_():
+    return render_template('sign_in.html',form_submit='/dashboard-admin',params=params,email_verification=' ',wrong_user=' ')
+
+@app.route('/users-joined-admin')
+def users_joined_only_admin():
+    return render_template('users_joined.html',params=params)
+
+@app.route('/users-products-admin')
+def users_products_only_admin():
+    return render_template('products.html',params=params)
+
+@app.route('/users-buyed-product')
+def users_ordered_only_admin():
+    return render_template('users_ordered.html',params=params)
+@app.route('/forgot-password/reset',methods=['POST','GET'])
+def reset_password_():
+    if (request.method=='POST'):
+        email_password_reset = request.form.get('email_id')
+        email = email_password_reset
+        try:
+            valid = validate_email(email)
+            e_mail = valid.email
+
+            if Users.query.filter_by(email=e_mail).first():
+                data_user = Users.query.filter_by(email=e_mail).first()
+                global secret_verification_key,reset_user_id
+                # print random string
+                verification_url= random_url()
+                #b= str(os.urandom(25))
+                #a = len(b) - 1
+                #verification_url= b[2:a]
+                secret_verification_key = verification_url
+                reset_user_id = data_user.sno
+                mail.send_message('Reset_Password :',
+                                  sender=email,
+                                  recipients=[email],
+                                  body='Hi '+ data_user.name+'Click here to reset password: http://127.0.0.1:5000/verification-secret/' + str(verification_url))
+                return render_template('reset_email_pass.html', response ='SUCCESSFULY_SEND, CHECK YOUR EMAIL',form_submit="/forgot-password/reset", params=params, join_us='/sign_up',
+                                   email_verification='', wrong_user=' ')
+            else:
+                return render_template('reset_email_pass.html', response='',
+                                email_submit="/forgot-password/reset",form_submit="/forgot-password/reset", params=params, join_us='/sign_up',
+                                email_verification='', wrong_user='__ERROR__')
+        except EmailNotValidError as e:
+            value = 'EMAIL_NOT_VERIFIED'
+            return render_template('reset_email_pass.html',response ='', form_submit="/forgot-password/reset", params=params, join_us='/sign_up',
+                                   email_verification=value, wrong_user=' ')
+    else:
+        return render_template('reset_email_pass.html', response ='',form_submit="/forgot-password/reset", params=params, join_us='/sign_up',
+                                   email_verification='', wrong_user=' ')
+
+
+
+@app.route('/verification-secret/<string:secret_key_url>')
+def secret_verification_(secret_key_url):
+    if (secret_key_url == secret_verification_key):
+        return render_template('reset_password.html',form_submit='/reset/password/successful', join_us='/sign_up',params=params)
+
+@app.route('/reset/password/successful',methods=['POST','GET'])
+def reset_password_performance():
+    if request.method=='POST':
+        pass_user1 = request.form.get('pass1')
+        pass_user2 = request.form.get('pass2')
+        if pass_user2 == pass_user1:
+            password = pass_user1
+            id = reset_user_id
+            #session['user'] = id
+            data = Users.query.filter_by(sno=id).first()
+            data.sno = id
+            data.name = 'Shivam Raj Dubey'
+            data.email = 'dubeyshivam1911@gmail.com'
+            data.pass_word = password
+            db.session.commmit()#setattr(user, 'no_of_logins', user.no_of_logins+1)session.commit()
+            #session.pop('user')
+            return render_template('sign_in.html',form_submit="/form-sign_in",params=params,join_us='/sign_up',email_verification=' ',wrong_user=' ',success='Password_reset_successful')
+        elif pass_user2 != pass_user1:
+            return render_template(render_template('sign_in.html',form_submit="/form-sign_in",params=params,join_us='/sign_up',email_verification=' ',wrong_user='Password_not_match'))
+    else:
+        return redirect('/sign_in')
+@app.route('/secure-payment/night-howler')
+def secure_payment():
+    return render_template('current_datetime.html',)
+@app.route('/failure-payment/bad',csrf_token='',MERCHANT_KEY='',hashh='',posted='',txnid='')
+def failure_payment():
+    return render_template('Failure.html',csrf_token='')
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+#response ='SUCCESSFULY_SEND, CHECK YOUR EMAIL',
+#@app.route('/form-sign_in', methods="GET"/"POST")
+#def accept_form_request_for_sign_in():
+ #   if ('user' in session and session['user'] == params['admin-user']):
+ #       if request.method == 'POST':
+ #           box_title = request.form.get('title')
+ #           tline = request.form.get('date')
+ #           slug = request.form.get('slug')
+ #           content = request.form.get('content')
+ #           img_file = request.form.get('img')
+ #           if id =='0':
+ #               sno.
+
+
+                #return render_template('dashboard.html', login_admin='/admin-login-form',users_joined='/users-joined-admin', params=params)
+#@app.route("/uploader",methodes = ['GET','POST'])
+#def uploader():
+#    if('uesr' in session and session['user']):
+#        if(request.method == 'POST'):
+#            f = request.files['file1']
+#            f.save(os.path.join(app.config['UPLOAD_FOALDER'],secure_filename(f.filename) ))
+#            return 'UPLOAD SUCCESSFULY'
+
+##def pagination():
+#    page = request.args.get('page')
+#    if (not str(page).isnumeric()):
+#        page = 0
+#    if (page==1):
+
+#photos = json.load(c)['photos'] ,photos=photos
+
+'''class Tourney(db.Model):
+    sno = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120),unique=False,nullable=False)
+    phone_num= db.Column(db.String(12),unique=True,nullable=False)
+    email = db.Column(db.String(120),unique=True, nullable=False)
+    country = db.Column(db.String(50), unique=False,nullable=False)
+    date = db.Column(db.String(10), unique=False, nullable=True)
+    tourney_date = db.Column(db.String(10), unique=False, nullable=False)'''
+
+#'sqlite:///nighthowler.sqlite3'
+# 'sqlite:///nighthowler.sqlite3'
+# print(os.urandom(16))

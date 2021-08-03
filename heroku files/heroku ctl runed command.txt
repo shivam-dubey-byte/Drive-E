@@ -1,0 +1,732 @@
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ sudo apt-get isntall pipenv
+bash: sudo: command not found
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ pip isntall pipenv
+ERROR: unknown command "isntall" - maybe you meant "install"
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ pip install pipenv
+Collecting pipenv
+  Downloading pipenv-2020.11.15-py2.py3-none-any.whl (3.9 MB)
+     |████████████████████████████████| 3.9 MB 3.2 MB/s
+Requirement already satisfied: setuptools>=36.2.1 in c:\users\shivam raj dubey\a
+ppdata\local\programs\python\python39\lib\site-packages (from pipenv) (56.0.0)
+Collecting certifi
+  Using cached certifi-2020.12.5-py2.py3-none-any.whl (147 kB)
+Collecting virtualenv-clone>=0.2.5
+  Downloading virtualenv_clone-0.5.4-py2.py3-none-any.whl (6.6 kB)
+Requirement already satisfied: pip>=18.0 in c:\users\shivam raj dubey\appdata\lo
+dCv5W, clear=False, no_vcs_ignore=False, global=False)                          dCv5W, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=C:\Users\Shivam Raj Dubey\AppData\Local\py
+, via=copy, app_data_dir=C:\Users\Shivam Raj Dubey\AppData\Local\pypa\virtualenv
+)                                                                               onActivator,XonshActivator
+    added seed packages: pip==21.1.1, setuptools==56.0.0, wheel==0.36.2
+  activators BashActivator,BatchActivator,FishActivator,PowerShellActivator,Pyth
+onActivator,XonshActivator
+[====]
+Successfully created virtual environment!
+Virtualenv location: C:\Users\Shivam Raj Dubey\.virtualenvs\heroku-WoodCv5W
+Creating a Pipfile for this project...
+Installing flask...
+Adding flask to Pipfile's [packages]...
+Installation Succeeded
+Installing gunicorn...
+Adding gunicorn to Pipfile's [packages]...
+Installation Succeeded
+Pipfile.lock not found, creating...
+Locking [dev-packages] dependencies...
+Locking [packages] dependencies...
+           Building requirements...
+Resolving dependencies...
+[ ===] Locking...
+Success!
+Updated Pipfile.lock (6f5432)!
+Installing dependencies from Pipfile.lock (6f5432)...
+  ================================ 0/0 - 00:00:00
+To activate this project's virtualenv, run pipenv shell.
+Alternatively, run a command inside the virtualenv with pipenv run.
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ touch Procfile
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ vim Procfile
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ touch runtime.txt
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ vim runtime.txt
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ mkdir app
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ cd app
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku/app
+$ touch main.py
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku/app
+$ sublime text3
+bash: sublime: command not found
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku/app
+$ sublime main.py
+bash: sublime: command not found
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku/app
+$ vim main.py
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku/app
+$ cd ..
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ touch wsgi.py
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ vim wsgi.py
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ pipenv shell
+Launching subshell in virtual environment...
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku
+$ git init
+Initialized empty Git repository in C:/Users/Shivam Raj Dubey/OneDrive/Desktop/h
+ create mode 100644 Pipfile
+ create mode 100644 Pipfile.lock
+ create mode 100644 Procfile
+ create mode 100644 app/main.py
+ create mode 100644 runtime.txt
+ create mode 100644 wsgi.py
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git remote add origin "https://github.com/shivam-dubey-byte/herokuapp.git"
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git remote -v
+origin  https://github.com/shivam-dubey-byte/herokuapp.git (fetch)
+origin  https://github.com/shivam-dubey-byte/herokuapp.git (push)
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git push origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/shivam-dubey-byte/herokua
+pp.git'                                                                         pp.git'
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$
+$ heroku login
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+heroku: Press any key to open up the browser to login or q to exit:
+    Error: getaddrinfo ENOTFOUND api.heroku.com
+    Code: ENOTFOUND
+Error: getaddrinfo ENOTFOUND cli-auth.heroku.com
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku login
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+heroku: Press any key to open up the browser to login or q to exit:
+    Error: getaddrinfo ENOTFOUND api.heroku.com
+    Code: ENOTFOUND
+Error: getaddrinfo ENOTFOUND cli-auth.heroku.com
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku login
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+heroku: Press any key to open up the browser to login or q to exit:
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/82f68604-4213-43
+39-a4ed-c83e843d3c2a?requestor=SFMyNTY.g2gDbQAAAAs0OS4zNy44Ny41MG4GADOAwHB5AWIAA
+VGA.8RMq5oea4SIDRd3Kah5zg6shAqIAVTURH6-QO52z9FI
+Logging in... done
+Logged in as dubeyshivam1911@gmail.com
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku create eflask-app
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+Creating ⬢ eflask-app... !
+ !    Name eflask-app is already taken You've reached the app limit of 5 apps
+ !    for unverified accounts. Delete some apps or add a credit card to verify
+ !    your account.
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku create eflask-app
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+Creating ⬢ eflask-app... !
+ !    Name eflask-app is already taken
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku create heroku-try
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+Creating ⬢ heroku-try... !
+ !    Name heroku-try is already taken
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku create heroku-try123321
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+Creating ⬢ heroku-try123321... done
+https://heroku-try123321.herokuapp.com/ | https://git.heroku.com/heroku-try123321.git
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git push heroku master
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (9/9), 3.09 KiB | 1.03 MiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Determining which buildpack to use for this app
+remote: -----> Python app detected
+remote: -----> Using Python version specified in runtime.txt
+remote: cp: cannot stat '/tmp/build_29657d36/requirements.txt': No such file or directory
+remote: -----> Installing python-3.9.5
+remote: -----> Installing pip 20.2.4, setuptools 47.1.1 and wheel 0.36.2
+remote: -----> Installing dependencies with Pipenv 2020.11.15
+remote:        Installing dependencies from Pipfile.lock (6f5432)...
+remote:        Ignoring colorama: markers 'platform_system == "Windows"' don't match your environment
+remote: -----> Installing SQLite3
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 66.7M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://heroku-try123321.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/heroku-try123321.git
+ * [new branch]      master -> master
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku domains:add www.crazydev.xyz
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+Adding www.crazydev.xyz to ⬢ heroku-try123321... done
+ »   Error: Please verify your account in order to add domains (please enter a credit card) For more
+ »   information, see https://devcenter.heroku.com/categories/billing Verify now at https://heroku.com/verify
+ »
+ »
+ »   Error ID: verification_required
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku login
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+heroku: Press any key to open up the browser to login or q to exit:
+Opening browser to https://cli-auth.heroku.com/auth/cli/browser/15e5dde8-4ece-4140-8629-e974eb377b33?requestor
+=SFMyNTY.g2gDbQAAAAs0OS4zNy44Ny41MG4GAOSNBHF5AWIAAVGA.G1bv7xnIg4yN8fDgNEoeNgYvQP96EKr3-qi_MUiA2nc
+Logging in... done
+Logged in as dubeyshivam1911@gmail.com
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git init
+Reinitialized existing Git repository in C:/Users/Shivam Raj Dubey/OneDrive/Desktop/heroku/.git/
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku git remote -a ^C
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku git remote -a heroku-try123321
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+manage local git repository for app
+
+USAGE
+  $ heroku git:COMMAND
+
+COMMANDS
+  git:clone   clones a heroku app to your local machine at DIRECTORY (defaults to app name)
+  git:remote  adds a git remote to an app repo
+
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git remote add origin "https://github.com/shivam-dubey-byte/herokuapp.git"
+error: remote origin already exists.
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ ^C
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git remote add origin "https://git.heroku.com/heroku-try123321.git"
+error: remote origin already exists.
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git pull origin master
+fatal: couldn't find remote ref master
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git pull origin main
+fatal: couldn't find remote ref main
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git pull origin main
+fatal: couldn't find remote ref main
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git add .
+warning: LF will be replaced by CRLF in app/main.py.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .idea/inspectionProfiles/Project_Default.xml.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in .idea/inspectionProfiles/profiles_settings.xml.
+The file will have its original line endings in your working directory
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git commit -am "heroku-try123321"
+[master dedf2db] heroku-try123321
+ 298 files changed, 192311 insertions(+), 8 deletions(-)
+ create mode 100644 .idea/.gitignore
+ create mode 100644 .idea/heroku.iml
+ create mode 100644 .idea/inspectionProfiles/Project_Default.xml
+ create mode 100644 .idea/inspectionProfiles/profiles_settings.xml
+ create mode 100644 .idea/misc.xml
+ create mode 100644 .idea/modules.xml
+ create mode 100644 .idea/vcs.xml
+ rewrite app/main.py (80%)
+ create mode 100644 app/static/assets/assets/css/bootstrap.min.css
+ create mode 100644 app/static/assets/assets/css/responsive.css
+ create mode 100644 app/static/assets/assets/css/style.css
+ create mode 100644 app/static/assets/assets/css/video-js.css
+ create mode 100644 app/static/assets/assets/fonts/css/font-awesome.min.css
+ create mode 100644 app/static/assets/assets/images/585x550.jpg
+ create mode 100644 app/static/assets/assets/images/blog-img-1.jpg
+ create mode 100644 app/static/assets/assets/images/blog-img-2.jpg
+ create mode 100644 app/static/assets/assets/images/blog-img-3.jpg
+ create mode 100644 app/static/assets/assets/images/competition-1.jpg
+ create mode 100644 app/static/assets/assets/images/competition-2.jpg
+ create mode 100644 app/static/assets/assets/images/competition-3.jpg
+ create mode 100644 app/static/assets/assets/images/competition-4.jpg
+ create mode 100644 app/static/assets/assets/images/competition-full.jpg
+ create mode 100644 app/static/assets/assets/images/favicon.ico
+ create mode 100644 app/static/assets/assets/images/gallery/gallery-1.jpg
+ create mode 100644 app/static/assets/assets/images/gallery/gallery-2.jpg
+ create mode 100644 app/static/assets/assets/images/gallery/gallery-3.jpg
+ create mode 100644 app/static/assets/assets/images/gallery/gallery-4.jpg
+ create mode 100644 app/static/assets/assets/images/game-img-1.jpg
+ create mode 100644 app/static/assets/assets/images/game-img-2.jpg
+ create mode 100644 app/static/assets/assets/images/game-img-3.jpg
+ create mode 100644 app/static/assets/assets/images/game-img-4.jpg
+ create mode 100644 app/static/assets/assets/images/game-slide-img-1.jpg
+ create mode 100644 app/static/assets/assets/images/logo.jpg
+ create mode 100644 app/static/assets/assets/images/stream-img-1.jpg
+ create mode 100644 app/static/assets/assets/images/stream-img-2.jpg
+ create mode 100644 app/static/assets/assets/images/stream-img-3.jpg
+ create mode 100644 app/static/assets/assets/images/testimonials/testimonial-author-1.jpg
+ create mode 100644 app/static/assets/assets/images/testimonials/testimonial-author-2.jpg
+ create mode 100644 app/static/assets/assets/images/testimonials/testimonial-author-3.jpg
+ create mode 100644 app/static/assets/assets/js/bootstrap.min.js
+ create mode 100644 app/static/assets/assets/js/jquery-3.3.1.min.js
+ create mode 100644 app/static/assets/assets/js/jquery.inview.min.js
+ create mode 100644 app/static/assets/assets/js/moment.min.js
+ create mode 100644 app/static/assets/assets/js/progressbar.min.js
+ create mode 100644 app/static/assets/assets/js/script.js
+ create mode 100644 app/static/assets/assets/js/video.js
+ create mode 100644 app/static/assets/assets/plugins/animate.css-master/.goutputstream-SVQH20
+ create mode 100644 app/static/assets/assets/plugins/animate.css-master/animate.min.css
+ create mode 100644 app/static/assets/assets/plugins/flex-menu/flexmenu.min.js
+ create mode 100644 app/static/assets/assets/plugins/jquery-date-range-picker-master/dist/daterangepicker.min.
+css
+ create mode 100644 app/static/assets/assets/plugins/jquery-date-range-picker-master/dist/jquery.daterangepick
+er.min.js
+ create mode 100644 app/static/assets/assets/plugins/jquery-match-height-master/dist/jquery.matchHeight.js
+ create mode 100644 app/static/assets/assets/plugins/lightbox2-master/dist/css/lightbox.css
+ create mode 100644 app/static/assets/assets/plugins/lightbox2-master/dist/js/lightbox.js
+ create mode 100644 app/static/assets/assets/plugins/muuri-master/muuri.js
+ create mode 100644 app/static/assets/assets/plugins/paroller.js-master/dist/jquery.paroller.min.js
+ create mode 100644 app/static/assets/assets/plugins/slick-1.8.0/slick/slick-theme.css
+ create mode 100644 app/static/assets/assets/plugins/slick-1.8.0/slick/slick.css
+ create mode 100644 app/static/assets/assets/plugins/slick-1.8.0/slick/slick.min.js
+ create mode 100644 app/static/assets/assets/plugins/slider/css/normalize.min.css
+ create mode 100644 app/static/assets/assets/plugins/slider/css/smartslider.min.css
+ create mode 100644 app/static/assets/assets/plugins/slider/images/slide-1.jpg
+ create mode 100644 app/static/assets/assets/plugins/slider/images/slide-2.jpg
+ create mode 100644 app/static/assets/assets/plugins/slider/images/slide-3.jpg
+ create mode 100644 app/static/assets/assets/plugins/slider/js/n2-j.min.js
+ create mode 100644 app/static/assets/assets/plugins/slider/js/n2-j.min.js~ (1)
+ create mode 100644 app/static/assets/assets/plugins/slider/js/nextend-frontend.min.js
+ create mode 100644 app/static/assets/assets/plugins/slider/js/nextend-gsap.min.js
+ create mode 100644 app/static/assets/assets/plugins/slider/js/nextend-webfontloader.min.js
+ create mode 100644 app/static/assets/assets/plugins/slider/js/smartslider-frontend.min.js
+ create mode 100644 app/static/assets/assets/plugins/slider/js/smartslider-frontend.min.js~ (1)
+ create mode 100644 app/static/assets/assets/plugins/slider/js/smartslider-simple-type-frontend.min.js
+ create mode 100644 app/static/assets/assets/plugins/vide-0.5.1/dist/jquery.vide.min.js
+ create mode 100644 app/static/assets/assets/plugins/wow-master/dist/wow.min.js
+ create mode 100644 app/static/assets/css/bootstrap.min.css
+ create mode 100644 app/static/assets/css/responsive.css
+ create mode 100644 app/static/assets/css/style.css
+ create mode 100644 app/static/assets/css/video-js.css
+ create mode 100644 app/static/assets/fonts/css/font-awesome.min.css
+ create mode 100644 app/static/assets/images/585x550.jpg
+ create mode 100644 app/static/assets/images/blog-img-1.jpg
+ create mode 100644 app/static/assets/images/blog-img-2.jpg
+ create mode 100644 app/static/assets/images/blog-img-3.jpg
+ create mode 100644 app/static/assets/images/competition-1.jpg
+ create mode 100644 app/static/assets/images/competition-2.jpg
+ create mode 100644 app/static/assets/images/competition-3.jpg
+ create mode 100644 app/static/assets/images/competition-4.jpg
+ create mode 100644 app/static/assets/images/competition-full.jpg
+ create mode 100644 app/static/assets/images/favicon.ico
+ create mode 100644 app/static/assets/images/gallery/gallery-1.jpg
+ create mode 100644 app/static/assets/images/gallery/gallery-2.jpg
+ create mode 100644 app/static/assets/images/gallery/gallery-3.jpg
+ create mode 100644 app/static/assets/images/gallery/gallery-4.jpg
+ create mode 100644 app/static/assets/images/game-img-1.jpg
+ create mode 100644 app/static/assets/images/game-img-2.jpg
+ create mode 100644 app/static/assets/images/game-img-3.jpg
+ create mode 100644 app/static/assets/images/game-img-4.jpg
+ create mode 100644 app/static/assets/images/game-slide-img-1.jpg
+ create mode 100644 app/static/assets/images/logo.jpg
+ create mode 100644 app/static/assets/images/stream-img-1.jpg
+ create mode 100644 app/static/assets/images/stream-img-2.jpg
+ create mode 100644 app/static/assets/images/stream-img-3.jpg
+ create mode 100644 app/static/assets/images/testimonials/testimonial-author-1.jpg
+ create mode 100644 app/static/assets/images/testimonials/testimonial-author-2.jpg
+ create mode 100644 app/static/assets/images/testimonials/testimonial-author-3.jpg
+ create mode 100644 app/static/assets/js/bootstrap.min.js
+ create mode 100644 app/static/assets/js/jquery-3.3.1.min.js
+ create mode 100644 app/static/assets/js/jquery.inview.min.js
+ create mode 100644 app/static/assets/js/moment.min.js
+ create mode 100644 app/static/assets/js/progressbar.min.js
+ create mode 100644 app/static/assets/js/script.js
+ create mode 100644 app/static/assets/js/video.js
+ create mode 100644 app/static/assets/plugins/animate.css-master/.goutputstream-SVQH20
+ create mode 100644 app/static/assets/plugins/animate.css-master/animate.min.css
+ create mode 100644 app/static/assets/plugins/flex-menu/flexmenu.min.js
+ create mode 100644 app/static/assets/plugins/jquery-date-range-picker-master/dist/daterangepicker.min.css
+ create mode 100644 app/static/assets/plugins/jquery-date-range-picker-master/dist/jquery.daterangepicker.min.
+js
+ create mode 100644 app/static/assets/plugins/jquery-match-height-master/dist/jquery.matchHeight.js
+ create mode 100644 app/static/assets/plugins/lightbox2-master/dist/css/lightbox.css
+ create mode 100644 app/static/assets/plugins/lightbox2-master/dist/js/lightbox.js
+ create mode 100644 app/static/assets/plugins/muuri-master/muuri.js
+ create mode 100644 app/static/assets/plugins/paroller.js-master/dist/jquery.paroller.min.js
+ create mode 100644 app/static/assets/plugins/slick-1.8.0/slick/slick-theme.css
+ create mode 100644 app/static/assets/plugins/slick-1.8.0/slick/slick.css
+ create mode 100644 app/static/assets/plugins/slick-1.8.0/slick/slick.min.js
+ create mode 100644 app/static/assets/plugins/slider/css/normalize.min.css
+ create mode 100644 app/static/assets/plugins/slider/css/smartslider.min.css
+ create mode 100644 app/static/assets/plugins/slider/images/slide-1.jpg
+ create mode 100644 app/static/assets/plugins/slider/images/slide-2.jpg
+ create mode 100644 app/static/assets/plugins/slider/images/slide-3.jpg
+ create mode 100644 app/static/assets/plugins/slider/js/n2-j.min.js
+ create mode 100644 app/static/assets/plugins/slider/js/n2-j.min.js~ (1)
+ create mode 100644 app/static/assets/plugins/slider/js/nextend-frontend.min.js
+ create mode 100644 app/static/assets/plugins/slider/js/nextend-gsap.min.js
+ create mode 100644 app/static/assets/plugins/slider/js/nextend-webfontloader.min.js
+ create mode 100644 app/static/assets/plugins/slider/js/smartslider-frontend.min.js
+ create mode 100644 app/static/assets/plugins/slider/js/smartslider-frontend.min.js~ (1)
+ create mode 100644 app/static/assets/plugins/slider/js/smartslider-simple-type-frontend.min.js
+ create mode 100644 app/static/assets/plugins/vide-0.5.1/dist/jquery.vide.min.js
+ create mode 100644 app/static/assets/plugins/wow-master/dist/wow.min.js
+ create mode 100644 app/static/css/clean-blog.css
+ create mode 100644 app/static/css/clean-blog.min.css
+ create mode 100644 app/static/css/signin.css
+ create mode 100644 app/static/img/about-bg.jpg
+ create mode 100644 app/static/img/contact-bg.jpg
+ create mode 100644 app/static/img/home-bg.jpg
+ create mode 100644 app/static/img/login.svg
+ create mode 100644 app/static/img/post-bg.jpg
+ create mode 100644 app/static/img/post-sample-image.jpg
+ create mode 100644 app/static/imp/Dashboard/bg.jpg
+ create mode 100644 app/static/imp/Dashboard/dasgboard-img.jpg
+ create mode 100644 app/static/imp/Dashboard/f1.js
+ create mode 100644 app/static/imp/Dashboard/f4.json
+ create mode 100644 app/static/imp/Dashboard/f8.css
+ create mode 100644 app/static/imp/Dashboard/header.css
+ create mode 100644 app/static/imp/Dashboard/home-bg.jpg
+ create mode 100644 app/static/imp/Tournament/style.css
+ create mode 100644 app/static/imp/sign_in/bg.jpg
+ create mode 100644 app/static/imp/sign_in/bootstrap-solid.svg
+ create mode 100644 app/static/imp/sign_in/bootstrap.min.css
+ create mode 100644 app/static/imp/sign_in/css/main.css
+ create mode 100644 app/static/imp/sign_in/favicon.ico
+ create mode 100644 app/static/imp/sign_in/images/bg-head-01.jpg
+ create mode 100644 app/static/imp/sign_in/images/bg-head-02.jpg
+ create mode 100644 app/static/imp/sign_in/images/bg.jpg
+ create mode 100644 app/static/imp/sign_in/js/global.js
+ create mode 100644 app/static/imp/sign_in/login-img.PNG
+ create mode 100644 app/static/imp/sign_in/signin.css
+ create mode 100644 app/static/imp/sign_in/vendor/datepicker/daterangepicker.css
+ create mode 100644 app/static/imp/sign_in/vendor/datepicker/daterangepicker.js
+ create mode 100644 app/static/imp/sign_in/vendor/datepicker/moment.min.js
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/HELP-US-OUT.txt
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/css/font-awesome.css
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/css/font-awesome.min.css
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/fonts/FontAwesome.otf
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/fonts/fontawesome-webfont.eot
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/fonts/fontawesome-webfont.svg
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/fonts/fontawesome-webfont.ttf
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/fonts/fontawesome-webfont.woff
+ create mode 100644 app/static/imp/sign_in/vendor/font-awesome-4.7/fonts/fontawesome-webfont.woff2
+ create mode 100644 app/static/imp/sign_in/vendor/jquery/jquery.js
+ create mode 100644 app/static/imp/sign_in/vendor/jquery/jquery.min.js
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/css/material-design-iconic-font.css
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/css/material-design-iconic-font.min.css
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/fonts/Material-Design-Iconic-Font.eot
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/fonts/Material-Design-Iconic-Font.svg
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/fonts/Material-Design-Iconic-Font.ttf
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/fonts/Material-Design-Iconic-Font.woff
+ create mode 100644 app/static/imp/sign_in/vendor/mdi-font/fonts/Material-Design-Iconic-Font.woff2
+ create mode 100644 app/static/imp/sign_in/vendor/select2/select2.min.css
+ create mode 100644 app/static/imp/sign_in/vendor/select2/select2.min.js
+ create mode 100644 app/static/imp/sign_up/css/main.css
+ create mode 100644 app/static/imp/sign_up/images/bg-head-01.jpg
+ create mode 100644 app/static/imp/sign_up/images/bg-head-02.jpg
+ create mode 100644 app/static/imp/sign_up/images/bg.jpg
+ create mode 100644 app/static/imp/sign_up/js/global.js
+ create mode 100644 app/static/imp/sign_up/vendor/datepicker/daterangepicker.css
+ create mode 100644 app/static/imp/sign_up/vendor/datepicker/daterangepicker.js
+ create mode 100644 app/static/imp/sign_up/vendor/datepicker/moment.min.js
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/HELP-US-OUT.txt
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/css/font-awesome.css
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/css/font-awesome.min.css
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/fonts/FontAwesome.otf
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/fonts/fontawesome-webfont.eot
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/fonts/fontawesome-webfont.svg
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/fonts/fontawesome-webfont.ttf
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/fonts/fontawesome-webfont.woff
+ create mode 100644 app/static/imp/sign_up/vendor/font-awesome-4.7/fonts/fontawesome-webfont.woff2
+ create mode 100644 app/static/imp/sign_up/vendor/jquery/jquery.js
+ create mode 100644 app/static/imp/sign_up/vendor/jquery/jquery.min.js
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/css/material-design-iconic-font.css
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/css/material-design-iconic-font.min.css
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/fonts/Material-Design-Iconic-Font.eot
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/fonts/Material-Design-Iconic-Font.svg
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/fonts/Material-Design-Iconic-Font.ttf
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/fonts/Material-Design-Iconic-Font.woff
+ create mode 100644 app/static/imp/sign_up/vendor/mdi-font/fonts/Material-Design-Iconic-Font.woff2
+ create mode 100644 app/static/imp/sign_up/vendor/select2/select2.min.css
+ create mode 100644 app/static/imp/sign_up/vendor/select2/select2.min.js
+ create mode 100644 app/static/js/clean-blog.js
+ create mode 100644 app/static/js/clean-blog.min.js
+ create mode 100644 app/static/js/contact_me.js
+ create mode 100644 app/static/js/contact_me.min.js
+ create mode 100644 app/static/js/jqBootstrapValidation.js
+ create mode 100644 app/static/js/jqBootstrapValidation.min.js
+ create mode 100644 app/static/vendor/bootstrap/css/bootstrap.css
+ create mode 100644 app/static/vendor/bootstrap/css/bootstrap.css.map
+ create mode 100644 app/static/vendor/bootstrap/css/bootstrap.min.css
+ create mode 100644 app/static/vendor/bootstrap/css/bootstrap.min.css.map
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.bundle.js
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.bundle.js.map
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.bundle.min.js
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.bundle.min.js.map
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.js
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.js.map
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.min.js
+ create mode 100644 app/static/vendor/bootstrap/js/bootstrap.min.js.map
+ create mode 100644 app/static/vendor/font-awesome/css/font-awesome.css
+ create mode 100644 app/static/vendor/font-awesome/css/font-awesome.css.map
+ create mode 100644 app/static/vendor/font-awesome/css/font-awesome.min.css
+ create mode 100644 app/static/vendor/font-awesome/fonts/FontAwesome.otf
+ create mode 100644 app/static/vendor/font-awesome/fonts/fontawesome-webfont.eot
+ create mode 100644 app/static/vendor/font-awesome/fonts/fontawesome-webfont.svg
+ create mode 100644 app/static/vendor/font-awesome/fonts/fontawesome-webfont.ttf
+ create mode 100644 app/static/vendor/font-awesome/fonts/fontawesome-webfont.woff
+ create mode 100644 app/static/vendor/font-awesome/fonts/fontawesome-webfont.woff2
+ create mode 100644 app/static/vendor/font-awesome/less/animated.less
+ create mode 100644 app/static/vendor/font-awesome/less/bordered-pulled.less
+ create mode 100644 app/static/vendor/font-awesome/less/core.less
+ create mode 100644 app/static/vendor/font-awesome/less/fixed-width.less
+ create mode 100644 app/static/vendor/font-awesome/less/font-awesome.less
+ create mode 100644 app/static/vendor/font-awesome/less/icons.less
+ create mode 100644 app/static/vendor/font-awesome/less/larger.less
+ create mode 100644 app/static/vendor/font-awesome/less/list.less
+ create mode 100644 app/static/vendor/font-awesome/less/mixins.less
+ create mode 100644 app/static/vendor/font-awesome/less/path.less
+ create mode 100644 app/static/vendor/font-awesome/less/rotated-flipped.less
+ create mode 100644 app/static/vendor/font-awesome/less/screen-reader.less
+ create mode 100644 app/static/vendor/font-awesome/less/stacked.less
+ create mode 100644 app/static/vendor/font-awesome/less/variables.less
+ create mode 100644 app/static/vendor/font-awesome/scss/_animated.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_bordered-pulled.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_core.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_fixed-width.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_icons.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_larger.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_list.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_mixins.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_path.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_rotated-flipped.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_screen-reader.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_stacked.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/_variables.scss
+ create mode 100644 app/static/vendor/font-awesome/scss/font-awesome.scss
+ create mode 100644 app/static/vendor/jquery/jquery.js
+ create mode 100644 app/static/vendor/jquery/jquery.min.js
+ create mode 100644 app/static/vendor/jquery/jquery.min.map
+ create mode 100644 app/static/vendor/jquery/jquery.slim.js
+ create mode 100644 app/static/vendor/jquery/jquery.slim.min.js
+ create mode 100644 app/static/vendor/jquery/jquery.slim.min.map
+ create mode 100644 app/templates/Failure.html
+ create mode 100644 app/templates/MyFile.txt
+ create mode 100644 app/templates/current_datetime.html
+ create mode 100644 app/templates/dashboard.html
+ create mode 100644 app/templates/edit.html
+ create mode 100644 app/templates/index.html
+ create mode 100644 app/templates/layout.html
+ create mode 100644 app/templates/layout1.html
+ create mode 100644 app/templates/products.html
+ create mode 100644 app/templates/reset_email_pass.html
+ create mode 100644 app/templates/reset_password.html
+ create mode 100644 app/templates/sign_in.html
+ create mode 100644 app/templates/sign_up.html
+ create mode 100644 app/templates/sucess.html
+ create mode 100644 app/templates/tournament.html
+ create mode 100644 app/templates/tourney.txt
+ create mode 100644 app/templates/users_joined.html
+ create mode 100644 app/templates/users_ordered.html
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ git push heroku master
+Enumerating objects: 264, done.
+Counting objects: 100% (264/264), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (241/241), done.
+Writing objects: 100% (261/261), 10.86 MiB | 352.00 KiB/s, done.
+Total 261 (delta 22), reused 0 (delta 0), pack-reused 0
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Using buildpack: heroku/python
+remote: -----> Python app detected
+remote: -----> Using Python version specified in runtime.txt
+remote: cp: cannot stat '/tmp/build_9f62b515/requirements.txt': No such file or directory
+remote: -----> Using cached install of python-3.9.5
+remote: -----> Installing pip 20.2.4, setuptools 47.1.1 and wheel 0.36.2
+remote:        Skipping installation, as Pipfile.lock hasn't changed since last deploy.
+remote: -----> Installing SQLite3
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 83.1M
+remote: -----> Launching...
+remote:        Released v4
+remote:        https://heroku-try123321.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/heroku-try123321.git
+   bdca9cb..dedf2db  master -> master
+
+Shivam Raj Dubey@DESKTOP-6OARRBL MINGW64 ~/OneDrive/Desktop/heroku (master)
+$ heroku logs --tail
+ »   Warning: heroku update available from 7.53.0 to 7.53.1.
+2021-05-15T17:23:44.392839+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ap
+p/wsgiapp.py", line 58, in load
+2021-05-15T17:23:44.392839+00:00 app[web.1]: return self.load_wsgiapp()
+2021-05-15T17:23:44.392840+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ap
+p/wsgiapp.py", line 48, in load_wsgiapp
+2021-05-15T17:23:44.392840+00:00 app[web.1]: return util.import_app(self.app_uri)
+2021-05-15T17:23:44.392840+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ut
+il.py", line 359, in import_app
+2021-05-15T17:23:44.392841+00:00 app[web.1]: mod = importlib.import_module(module)
+2021-05-15T17:23:44.392841+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/importlib/__init__.py", l
+ine 127, in import_module
+2021-05-15T17:23:44.392842+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2021-05-15T17:23:44.392842+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+2021-05-15T17:23:44.392842+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1007, in _find_and_loa
+d
+2021-05-15T17:23:44.392843+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 986, in _find_and_load
+_unlocked
+2021-05-15T17:23:44.392843+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+2021-05-15T17:23:44.392844+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 855, in exec_
+module
+2021-05-15T17:23:44.392844+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 228, in _call_with_fra
+mes_removed
+2021-05-15T17:23:44.392844+00:00 app[web.1]: File "/app/wsgi.py", line 1, in <module>
+2021-05-15T17:23:44.392844+00:00 app[web.1]: from app.main import app
+2021-05-15T17:23:44.392845+00:00 app[web.1]: File "/app/app/main.py", line 1, in <module>
+2021-05-15T17:23:44.392845+00:00 app[web.1]: from email_validator import validate_email, EmailNotValidError
+2021-05-15T17:23:44.392845+00:00 app[web.1]: ModuleNotFoundError: No module named 'email_validator'
+2021-05-15T17:23:44.393006+00:00 app[web.1]: [2021-05-15 17:23:44 +0000] [8] [INFO] Worker exiting (pid: 8)
+2021-05-15T17:23:44.452934+00:00 heroku[web.1]: State changed from starting to up
+2021-05-15T17:23:44.610027+00:00 app[web.1]: [2021-05-15 17:23:44 +0000] [4] [WARNING] Worker with pid 8 was t
+erminated due to signal 15
+2021-05-15T17:23:44.668173+00:00 app[web.1]: [2021-05-15 17:23:44 +0000] [4] [INFO] Shutting down: Master
+2021-05-15T17:23:44.669767+00:00 app[web.1]: [2021-05-15 17:23:44 +0000] [4] [INFO] Reason: Worker failed to b
+oot.
+2021-05-15T17:23:44.848940+00:00 heroku[web.1]: Process exited with status 3
+2021-05-15T17:23:44.945342+00:00 heroku[web.1]: State changed from up to crashed
+2021-05-15T17:23:44.948838+00:00 heroku[web.1]: State changed from crashed to starting
+2021-05-15T17:23:51.737445+00:00 heroku[web.1]: Starting process with command `gunicorn wsgi:app`
+2021-05-15T17:23:55.138679+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [4] [INFO] Starting gunicorn 20.1.0
+2021-05-15T17:23:55.140867+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [4] [INFO] Listening at: http://0.0.0
+.0:59987 (4)
+2021-05-15T17:23:55.140990+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [4] [INFO] Using worker: sync
+2021-05-15T17:23:55.145069+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [7] [INFO] Booting worker with pid: 7
+2021-05-15T17:23:55.161816+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [7] [ERROR] Exception in worker proce
+ss
+2021-05-15T17:23:55.161818+00:00 app[web.1]: Traceback (most recent call last):
+2021-05-15T17:23:55.161835+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ar
+biter.py", line 589, in spawn_worker
+2021-05-15T17:23:55.161836+00:00 app[web.1]: worker.init_process()
+2021-05-15T17:23:55.161837+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/wo
+rkers/base.py", line 134, in init_process
+2021-05-15T17:23:55.161837+00:00 app[web.1]: self.load_wsgi()
+2021-05-15T17:23:55.161837+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/wo
+rkers/base.py", line 146, in load_wsgi
+2021-05-15T17:23:55.161838+00:00 app[web.1]: self.wsgi = self.app.wsgi()
+2021-05-15T17:23:55.161838+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ap
+p/base.py", line 67, in wsgi
+2021-05-15T17:23:55.161838+00:00 app[web.1]: self.callable = self.load()
+2021-05-15T17:23:55.161839+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ap
+p/wsgiapp.py", line 58, in load
+2021-05-15T17:23:55.161839+00:00 app[web.1]: return self.load_wsgiapp()
+2021-05-15T17:23:55.161839+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ap
+p/wsgiapp.py", line 48, in load_wsgiapp
+2021-05-15T17:23:55.161840+00:00 app[web.1]: return util.import_app(self.app_uri)
+2021-05-15T17:23:55.161840+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ut
+il.py", line 359, in import_app
+2021-05-15T17:23:55.161841+00:00 app[web.1]: mod = importlib.import_module(module)
+2021-05-15T17:23:55.161841+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/importlib/__init__.py", l
+ine 127, in import_module
+2021-05-15T17:23:55.161842+00:00 app[web.1]: return _bootstrap._gcd_import(name[level:], package, level)
+2021-05-15T17:23:55.161842+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+2021-05-15T17:23:55.161842+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 1007, in _find_and_loa
+d
+2021-05-15T17:23:55.161843+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 986, in _find_and_load
+_unlocked
+2021-05-15T17:23:55.161843+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+2021-05-15T17:23:55.161843+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 855, in exec_
+module
+2021-05-15T17:23:55.161844+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 228, in _call_with_fra
+mes_removed
+2021-05-15T17:23:55.161844+00:00 app[web.1]: File "/app/wsgi.py", line 1, in <module>
+2021-05-15T17:23:55.161845+00:00 app[web.1]: from app.main import app
+2021-05-15T17:23:55.161845+00:00 app[web.1]: File "/app/app/main.py", line 1, in <module>
+2021-05-15T17:23:55.161845+00:00 app[web.1]: from email_validator import validate_email, EmailNotValidError
+2021-05-15T17:23:55.161846+00:00 app[web.1]: ModuleNotFoundError: No module named 'email_validator'
+2021-05-15T17:23:55.161953+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [7] [INFO] Worker exiting (pid: 7)
+2021-05-15T17:23:55.174474+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [8] [INFO] Booting worker with pid: 8
+2021-05-15T17:23:55.192768+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [8] [ERROR] Exception in worker proce
+ss
+2021-05-15T17:23:55.192770+00:00 app[web.1]: Traceback (most recent call last):
+2021-05-15T17:23:55.192771+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/ar
+biter.py", line 589, in spawn_worker
+2021-05-15T17:23:55.192771+00:00 app[web.1]: worker.init_process()
+2021-05-15T17:23:55.192772+00:00 app[web.1]: File "/app/.heroku/python/lib/python3.9/site-packages/gunicorn/wo
+2021-05-15T17:23:55.192779+00:00 app[web.1]: File "<frozen importlib._bootstrap_external>", line 855, in exec_module
+2021-05-15T17:23:55.192779+00:00 app[web.1]: File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+2021-05-15T17:23:55.192780+00:00 app[web.1]: File "/app/wsgi.py", line 1, in <module>
+2021-05-15T17:23:55.192780+00:00 app[web.1]: from app.main import app
+2021-05-15T17:23:55.192780+00:00 app[web.1]: File "/app/app/main.py", line 1, in <module>
+2021-05-15T17:23:55.192781+00:00 app[web.1]: from email_validator import validate_email, EmailNotValidError
+2021-05-15T17:23:55.192781+00:00 app[web.1]: ModuleNotFoundError: No module named 'email_validator'
+2021-05-15T17:23:55.192916+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [8] [INFO] Worker exiting (pid: 8)
+2021-05-15T17:23:55.199137+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [4] [WARNING] Worker with pid 8 was terminated due to signal 15
+2021-05-15T17:23:55.297733+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [4] [INFO] Shutting down: Master
+2021-05-15T17:23:55.297889+00:00 app[web.1]: [2021-05-15 17:23:55 +0000] [4] [INFO] Reason: Worker failed to boot.
+2021-05-15T17:23:55.388753+00:00 heroku[web.1]: Process exited with status 3
+2021-05-15T17:23:55.457913+00:00 heroku[web.1]: State changed from starting to crashed
+2021-05-15T17:24:48.844446+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=heroku-try123321.herokuapp.com reque
+st_id=acdd606c-4a9f-4901-94b0-b8d5fbe1d747 fwd="49.37.87.50" dyno= connect= service= status=503 bytes= protocol=https
+2021-05-15T17:24:49.626191+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=heroku-try123321.herokuap
+p.com request_id=e969dbec-2eee-4352-800c-791f8b416611 fwd="49.37.87.50" dyno= connect= service= status=503 bytes= protocol=https
